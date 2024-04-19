@@ -251,6 +251,85 @@ let alternarSinal = () => {
 
 
 let calculadora = new Calculadora();
+let mostraVisor = () => {
+    document.getElementById('visor-id').innerHTML = calculadora.mostraVisor();
+}
+
+
+let digito = (dig) => {
+    calculadora.recebeDigito(dig);
+    mostraVisor();
+}
+
+
+let defOp = (op) => {
+    if (calculadora.opAtual != calculadora.op.NOP) {
+        igual();
+        mostraVisor();
+    }
+    calculadora.defineOperacao(op);
+}
+
+
+let igual = () => {
+    calculadora.igual();
+    mostraVisor();
+}
+
+
+let teclaC = () => {
+    calculadora.teclaC();
+    mostraVisor();
+}
+
+
+let teclaMmais = () => {
+    calculadora.teclaMmais();
+}
+
+
+let teclaMmenos = () => {
+    calculadora.teclaMmenos();
+}
+
+
+
+let teclaRM = () => {
+    calculadora.teclaRM();
+    mostraVisor();
+}
+
+
+let teclaCLM = () => {
+    calculadora.teclaCLM();
+}
+
+
+let raizQuadrada = () => {
+    calculadora.raizQuadrada();
+    mostraVisor();
+}
+
+
+let inverso = () => {
+    calculadora.inverso();
+    mostraVisor();
+}
+
+
+let calcularPorcentagem = () => {
+    calculadora.calcularPorcentagem();
+    mostraVisor();
+}
+
+let alternarSinal = () => {
+    calculadora.alternarSinal();
+    mostraVisor();
+}
+
+
+let calculadora = new Calculadora();
 
 
 mostraVisor();
+
