@@ -18,12 +18,10 @@ class Calculadora {
         this.opAtual = this.op.NOP;
     }
 
-    
     mostraVisor() {
         return this.nrVisor;
     }
 
- 
     recebeDigito(dig) {
         if (this.estadoErro) return;
         if (dig.length != 1) return;
@@ -45,7 +43,6 @@ class Calculadora {
         }
     }
 
-    
     defineOperacao(op) {
         if (this.estadoErro) return;
         switch (op) {
@@ -97,7 +94,6 @@ class Calculadora {
         this.nrVisor = String(resultado).slice(0, 10);
     }
 
-    
     teclaC() {
         this.nrVisor = '0';
         this.ptDecimal = false;
@@ -107,31 +103,26 @@ class Calculadora {
         this.estadoErro = false;
     }
 
-    
     teclaMmais() {
         if (this.estadoErro) return;
         this.memoria += parseFloat(this.nrVisor);
     }
 
-  
     teclaMmenos() {
         if (this.estadoErro) return;
         this.memoria -= parseFloat(this.nrVisor);
     }
 
-  
     teclaRM() {
         if (this.estadoErro) return;
         this.nrVisor = String(this.memoria);
     }
 
-    
     teclaCLM() {
         if (this.estadoErro) return;
         this.memoria = 0;
     }
 
-    
     raizQuadrada() {
         if (this.estadoErro) return;
         let numero = parseFloat(this.nrVisor);
@@ -144,7 +135,6 @@ class Calculadora {
         this.nrVisor = String(raiz).slice(0, 10);
     }
 
-    
     inverso() {
         if (this.estadoErro) return;
         let numero = parseFloat(this.nrVisor);
@@ -157,7 +147,6 @@ class Calculadora {
         this.nrVisor = String(inverso).slice(0, 10);
     }
 
-    
     calcularPorcentagem() {
         if (this.estadoErro) return;
         let numero = parseFloat(this.nrVisor);
@@ -165,24 +154,22 @@ class Calculadora {
         this.nrVisor = String(porcentagem).slice(0, 10);
     }
 
-   
     alternarSinal() {
         if (this.estadoErro) return;
         this.nrVisor = -parseFloat(this.nrVisor);
     }
 }
 
+let calculadora = new Calculadora();
 
 let mostraVisor = () => {
     document.getElementById('visor-id').innerHTML = calculadora.mostraVisor();
 }
 
-
 let digito = (dig) => {
     calculadora.recebeDigito(dig);
     mostraVisor();
 }
-
 
 let defOp = (op) => {
     if (calculadora.opAtual != calculadora.op.NOP) {
@@ -192,52 +179,42 @@ let defOp = (op) => {
     calculadora.defineOperacao(op);
 }
 
-
 let igual = () => {
     calculadora.igual();
     mostraVisor();
 }
-
 
 let teclaC = () => {
     calculadora.teclaC();
     mostraVisor();
 }
 
-
 let teclaMmais = () => {
     calculadora.teclaMmais();
 }
 
-
 let teclaMmenos = () => {
     calculadora.teclaMmenos();
 }
-
-
 
 let teclaRM = () => {
     calculadora.teclaRM();
     mostraVisor();
 }
 
-
 let teclaCLM = () => {
     calculadora.teclaCLM();
 }
-
 
 let raizQuadrada = () => {
     calculadora.raizQuadrada();
     mostraVisor();
 }
 
-
 let inverso = () => {
     calculadora.inverso();
     mostraVisor();
 }
-
 
 let calcularPorcentagem = () => {
     calculadora.calcularPorcentagem();
@@ -248,88 +225,7 @@ let alternarSinal = () => {
     calculadora.alternarSinal();
     mostraVisor();
 }
-
-
-let calculadora = new Calculadora();
-let mostraVisor = () => {
-    document.getElementById('visor-id').innerHTML = calculadora.mostraVisor();
-}
-
-
-let digito = (dig) => {
-    calculadora.recebeDigito(dig);
-    mostraVisor();
-}
-
-
-let defOp = (op) => {
-    if (calculadora.opAtual != calculadora.op.NOP) {
-        igual();
-        mostraVisor();
-    }
-    calculadora.defineOperacao(op);
-}
-
-
-let igual = () => {
-    calculadora.igual();
-    mostraVisor();
-}
-
-
-let teclaC = () => {
-    calculadora.teclaC();
-    mostraVisor();
-}
-
-
-let teclaMmais = () => {
-    calculadora.teclaMmais();
-}
-
-
-let teclaMmenos = () => {
-    calculadora.teclaMmenos();
-}
-
-
-
-let teclaRM = () => {
-    calculadora.teclaRM();
-    mostraVisor();
-}
-
-
-let teclaCLM = () => {
-    calculadora.teclaCLM();
-}
-
-
-let raizQuadrada = () => {
-    calculadora.raizQuadrada();
-    mostraVisor();
-}
-
-
-let inverso = () => {
-    calculadora.inverso();
-    mostraVisor();
-}
-
-
-let calcularPorcentagem = () => {
-    calculadora.calcularPorcentagem();
-    mostraVisor();
-}
-
-let alternarSinal = () => {
-    calculadora.alternarSinal();
-    mostraVisor();
-}
-
-
-let calculadora = new Calculadora();
-
 
 mostraVisor();
+
 
