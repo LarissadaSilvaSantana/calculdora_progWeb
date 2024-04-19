@@ -45,7 +45,7 @@ class Calculadora {
         }
     }
 
-
+    
     defineOperacao(op) {
         if (this.estadoErro) return;
         switch (op) {
@@ -65,7 +65,6 @@ class Calculadora {
         this.memTemp = this.nrVisor;
     }
 
-    
     igual() {
         if (this.estadoErro) return;
         if (this.opAtual == this.op.NOP) return;
@@ -98,7 +97,7 @@ class Calculadora {
         this.nrVisor = String(resultado).slice(0, 10);
     }
 
-  
+    
     teclaC() {
         this.nrVisor = '0';
         this.ptDecimal = false;
@@ -108,19 +107,19 @@ class Calculadora {
         this.estadoErro = false;
     }
 
-  
+    
     teclaMmais() {
         if (this.estadoErro) return;
         this.memoria += parseFloat(this.nrVisor);
     }
 
-    
+  
     teclaMmenos() {
         if (this.estadoErro) return;
         this.memoria -= parseFloat(this.nrVisor);
     }
 
-   
+  
     teclaRM() {
         if (this.estadoErro) return;
         this.nrVisor = String(this.memoria);
@@ -132,35 +131,33 @@ class Calculadora {
         this.memoria = 0;
     }
 
- 
-raizQuadrada(){
-if(this.estadoErro)return;
-let numero = parseFloat(this.nrVisor);
-if (numero < 0) {
-    this.estadoErro = true;
-    this.nrVisor = 'ERRO!';
-    return;
+    
+    raizQuadrada() {
+        if (this.estadoErro) return;
+        let numero = parseFloat(this.nrVisor);
+        if (numero < 0) {
+            this.estadoErro = true;
+            this.nrVisor = 'ERRO!';
+            return;
+        }
+        let raiz = Math.sqrt(numero);
+        this.nrVisor = String(raiz).slice(0, 10);
     }
-    let raiz = Math.sqrt(numero);
-    this.nrVisor = String(raiz).slice(0, 10);
 
-}
-
-inverso() {
-    if (this.estadoErro) return;
-    let numero = parseFloat(this.nrVisor);
-    if (numero === 0) {
-        this.estadoErro = true;
-        this.nrVisor = 'ERRO!';
-        return;
+    
+    inverso() {
+        if (this.estadoErro) return;
+        let numero = parseFloat(this.nrVisor);
+        if (numero === 0) {
+            this.estadoErro = true;
+            this.nrVisor = 'ERRO!';
+            return;
+        }
+        let inverso = 1 / numero;
+        this.nrVisor = String(inverso).slice(0, 10);
     }
-    let inverso = 1 / numero;
-    this.nrVisor = String(inverso).slice(0, 10);
-}
 
-   
-
- 
+    
     calcularPorcentagem() {
         if (this.estadoErro) return;
         let numero = parseFloat(this.nrVisor);
@@ -168,9 +165,92 @@ inverso() {
         this.nrVisor = String(porcentagem).slice(0, 10);
     }
 
-    
+   
     alternarSinal() {
         if (this.estadoErro) return;
         this.nrVisor = -parseFloat(this.nrVisor);
     }
 }
+
+
+let mostraVisor = () => {
+    document.getElementById('visor-id').innerHTML = calculadora.mostraVisor();
+}
+
+
+let digito = (dig) => {
+    calculadora.recebeDigito(dig);
+    mostraVisor();
+}
+
+
+let defOp = (op) => {
+    if (calculadora.opAtual != calculadora.op.NOP) {
+        igual();
+        mostraVisor();
+    }
+    calculadora.defineOperacao(op);
+}
+
+
+let igual = () => {
+    calculadora.igual();
+    mostraVisor();
+}
+
+
+let teclaC = () => {
+    calculadora.teclaC();
+    mostraVisor();
+}
+
+
+let teclaMmais = () => {
+    calculadora.teclaMmais();
+}
+
+
+let teclaMmenos = () => {
+    calculadora.teclaMmenos();
+}
+
+
+
+let teclaRM = () => {
+    calculadora.teclaRM();
+    mostraVisor();
+}
+
+
+let teclaCLM = () => {
+    calculadora.teclaCLM();
+}
+
+
+let raizQuadrada = () => {
+    calculadora.raizQuadrada();
+    mostraVisor();
+}
+
+
+let inverso = () => {
+    calculadora.inverso();
+    mostraVisor();
+}
+
+
+let calcularPorcentagem = () => {
+    calculadora.calcularPorcentagem();
+    mostraVisor();
+}
+
+let alternarSinal = () => {
+    calculadora.alternarSinal();
+    mostraVisor();
+}
+
+
+let calculadora = new Calculadora();
+
+
+mostraVisor();
